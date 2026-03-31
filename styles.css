@@ -1,0 +1,215 @@
+:root {
+  --bg-deep: #0c1222;
+  --bg-mid: #141b2d;
+  --card-bg: rgba(22, 30, 48, 0.85);
+  --card-border: rgba(99, 179, 237, 0.25);
+  --text: #e8edf5;
+  --text-muted: #94a3b8;
+  --accent: #63b3ed;
+  --accent-soft: rgba(99, 179, 237, 0.15);
+  --gold: #e8c547;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Noto Sans KR", "Outfit", system-ui, sans-serif;
+  background: radial-gradient(ellipse 120% 80% at 50% -20%, #1e3a5f 0%, transparent 55%),
+    linear-gradient(165deg, var(--bg-deep) 0%, var(--bg-mid) 50%, #0a0e18 100%);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow-x: hidden;
+}
+
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(rgba(99, 179, 237, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 179, 237, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 380px;
+  padding: 2rem 1.75rem 1.75rem;
+  border-radius: 24px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 28px 56px rgba(0, 0, 0, 0.5), 0 0 40px var(--accent-soft);
+}
+
+.card__glow {
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  width: 120%;
+  height: 60%;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgba(99, 179, 237, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.avatar {
+  width: 148px;
+  height: 184px;
+  margin: 0 auto 0.85rem;
+  transform: translateZ(24px);
+}
+
+.avatar__svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.35));
+}
+
+.card__header {
+  text-align: center;
+  margin-bottom: 1rem;
+  transform: translateZ(12px);
+}
+
+.badge {
+  display: inline-block;
+  margin: 0 0 0.35rem;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  background: rgba(232, 197, 71, 0.12);
+  border: 1px solid rgba(232, 197, 71, 0.35);
+  border-radius: 999px;
+}
+
+.name {
+  margin: 0 0 0.5rem;
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.title {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+}
+
+.tagline {
+  margin: 0 0 1.25rem;
+  padding: 0 0.25rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  text-align: center;
+  transform: translateZ(8px);
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  transform: translateZ(16px);
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(99, 179, 237, 0.3);
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.contact:hover {
+  background: rgba(99, 179, 237, 0.22);
+  border-color: rgba(99, 179, 237, 0.5);
+  color: #9fd4f5;
+}
+
+.contact--email {
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  padding: 0.65rem 0.85rem;
+}
+
+.contact--email .contact__text {
+  word-break: break-all;
+  text-align: center;
+  line-height: 1.35;
+}
+
+.contact--youtube {
+  color: #ff7b7b;
+  background: rgba(255, 77, 77, 0.1);
+  border-color: rgba(255, 100, 100, 0.35);
+}
+
+.contact--youtube:hover {
+  background: rgba(255, 77, 77, 0.18);
+  border-color: rgba(255, 120, 120, 0.5);
+  color: #ff9e9e;
+}
+
+.contact__icon {
+  display: flex;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.hint {
+  margin: 1rem 0 0;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-align: center;
+  opacity: 0.65;
+  transform: translateZ(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+
+  .hint {
+    display: none;
+  }
+}
